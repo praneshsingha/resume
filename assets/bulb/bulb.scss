@@ -1,0 +1,131 @@
+:root
+{
+    --buld_color: #444;
+    --bulb_size: 80px;
+}
+.bulb_container
+{
+    position: absolute;
+    top: -15vh;
+    right: 0vw;
+    @media(max-width: 970px)
+    {
+        top: -35vw;
+    }
+}
+.light
+{
+    position: relative;
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    display: grid;
+    place-items: center;
+    background-color: #100d2d;
+    backdrop-filter: blur(7px);
+    border: 2px solid transparent;
+    @media(max-width:)
+}
+.bulb
+{
+    position: relative;
+    height: var(--bulb_size);
+    width: var(--bulb_size);
+    background-color: var(--buld_color);
+    border-radius: 50%;
+    z-index: 2;
+    &::before
+    {
+        content: '';
+        position: absolute;
+        width: 36px;
+        height: 80px;
+        background-color: var(--buld_color);
+        left: 50%;
+        top: -50px;
+        transform: translateX(-50%);
+        border-top: 30px solid #000;
+        // border-top-left-radius: 10px;
+        // border-top-right-radius: 10px;
+        border-radius: 10px;
+    }
+    span
+    {
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        box-shadow: 20px 20px 0 10px var(--buld_color);
+        top: -16px;
+        border-bottom-right-radius: 40px;
+        &:first-child
+        {
+            transform: rotate(342deg);
+            left: -4px;
+        }
+        &:last-child
+        {
+            transform: rotate(107deg);
+            right: -4px;
+        }
+    }
+}
+body.on
+{
+    background-color: #262626;
+    // color: #fff;
+}
+.bulb_container.on
+{
+    color: #fff;
+    transition: 2s;
+    .light
+    {
+        // border-color: #1f1f1f;
+        .bulb
+        {
+
+            background-color: #fff;
+            box-shadow: 0 0 50px #fff,
+            0 0 100px #fff,
+            0 0 150px #fff;
+            transition: box-shadow background-color all 2s;
+            // filter: blur(20px);
+            &::before
+            {
+                background-color: #fff;
+                transition: background-color 2s;
+            }
+            &::after
+            {
+                background-color: #fff;
+                transition: filter background-color 2s;
+                position: absolute;
+                content: '';
+                top: 50%;
+                left: 50%;
+                width: 120px;
+                height: 120px;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                filter: blur(20px);
+            }
+            span
+            {
+                box-shadow: 20px 20px 0 10px #fff;
+                transition: all 2s;
+            }
+        }
+    }
+}
+.wire
+{
+    height: 40vh;
+    width: 4px;
+    background-color: #000;
+    position: absolute;
+    left: calc(50% - 2px);
+    bottom: 50%;
+    z-index: 1;
+}

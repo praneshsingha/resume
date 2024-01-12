@@ -1,0 +1,140 @@
+:root {
+  --buld_color: #444;
+  --bulb_size: 80px;
+}
+
+.bulb_container {
+  position: absolute;
+  top: -15vh;
+  right: 0vw;
+}
+
+@media (max-width: 970px) {
+  .bulb_container {
+    top: -35vw;
+  }
+}
+
+.light {
+  position: relative;
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background-color: #100d2d;
+  -webkit-backdrop-filter: blur(7px);
+          backdrop-filter: blur(7px);
+  border: 2px solid transparent;
+}
+
+.bulb {
+  position: relative;
+  height: var(--bulb_size);
+  width: var(--bulb_size);
+  background-color: var(--buld_color);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.bulb::before {
+  content: '';
+  position: absolute;
+  width: 36px;
+  height: 80px;
+  background-color: var(--buld_color);
+  left: 50%;
+  top: -50px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border-top: 30px solid #000;
+  border-radius: 10px;
+}
+
+.bulb span {
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  -webkit-box-shadow: 20px 20px 0 10px var(--buld_color);
+          box-shadow: 20px 20px 0 10px var(--buld_color);
+  top: -16px;
+  border-bottom-right-radius: 40px;
+}
+
+.bulb span:first-child {
+  -webkit-transform: rotate(342deg);
+          transform: rotate(342deg);
+  left: -4px;
+}
+
+.bulb span:last-child {
+  -webkit-transform: rotate(107deg);
+          transform: rotate(107deg);
+  right: -4px;
+}
+
+body.on {
+  background-color: #262626;
+}
+
+.bulb_container.on {
+  color: #fff;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+.bulb_container.on .light .bulb {
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 50px #fff, 0 0 100px #fff, 0 0 150px #fff;
+          box-shadow: 0 0 50px #fff, 0 0 100px #fff, 0 0 150px #fff;
+  -webkit-transition: -webkit-box-shadow background-color all 2s;
+  transition: -webkit-box-shadow background-color all 2s;
+  transition: box-shadow background-color all 2s;
+  transition: box-shadow background-color all 2s, -webkit-box-shadow background-color all 2s;
+}
+
+.bulb_container.on .light .bulb::before {
+  background-color: #fff;
+  -webkit-transition: background-color 2s;
+  transition: background-color 2s;
+}
+
+.bulb_container.on .light .bulb::after {
+  background-color: #fff;
+  -webkit-transition: -webkit-filter background-color 2s;
+  transition: -webkit-filter background-color 2s;
+  transition: filter background-color 2s;
+  transition: filter background-color 2s, -webkit-filter background-color 2s;
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 50%;
+  -webkit-filter: blur(20px);
+          filter: blur(20px);
+}
+
+.bulb_container.on .light .bulb span {
+  -webkit-box-shadow: 20px 20px 0 10px #fff;
+          box-shadow: 20px 20px 0 10px #fff;
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+
+.wire {
+  height: 40vh;
+  width: 4px;
+  background-color: #000;
+  position: absolute;
+  left: calc(50% - 2px);
+  bottom: 50%;
+  z-index: 1;
+}
+/*# sourceMappingURL=bulb.css.map */

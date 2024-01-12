@@ -1,0 +1,152 @@
+:root {
+  --dice_size: 200px;
+  --half_dice: 100px;
+  --dice_font: 8em;
+}
+
+@-webkit-keyframes anime_rotate {
+  0% {
+    -webkit-transform: rotateX(-30deg) rotateY(0deg);
+            transform: rotateX(-30deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(-30deg) rotateY(360deg);
+            transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+@keyframes anime_rotate {
+  0% {
+    -webkit-transform: rotateX(-30deg) rotateY(0deg);
+            transform: rotateX(-30deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(-30deg) rotateY(360deg);
+            transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+.cube {
+  position: relative;
+  width: var(--dice_size);
+  height: var(--dice_size);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(-30deg);
+          transform: rotateX(-30deg);
+  -webkit-animation: anime_rotate 20s linear infinite;
+          animation: anime_rotate 20s linear infinite;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.cube div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.cube div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#151515), to(#fc01a4));
+  background: linear-gradient(#151515, #fc01a4);
+  -webkit-transform: rotateY(calc(90deg * var(--i))) translateZ(var(--half_dice));
+          transform: rotateY(calc(90deg * var(--i))) translateZ(var(--half_dice));
+  font-family: var(--boldFont);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.cube div span h2 {
+  position: absolute;
+  font-size: var(--dice_font);
+  color: #fff;
+  -webkit-transform: translateZ(50px);
+          transform: translateZ(50px);
+}
+
+.cube div span h2:first-child {
+  -webkit-transform: translateZ(0px);
+          transform: translateZ(0px);
+  color: rgba(0, 0, 0, 0.1);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+}
+
+.cube .top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--dice_size);
+  height: var(--dice_size);
+  background-color: #222222;
+  -webkit-transform: rotateX(90deg) translateZ(var(--half_dice));
+          transform: rotateX(90deg) translateZ(var(--half_dice));
+  font-family: var(--boldFont);
+  font-size: var(--dice_font);
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cube .top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--dice_size);
+  width: var(--dice_size);
+  background-color: #fb018f;
+  -webkit-transform: translateZ(-380px);
+          transform: translateZ(-380px);
+  -webkit-filter: blur(20px);
+          filter: blur(20px);
+  -webkit-box-shadow: 0 0 120px rgba(252, 1, 149, 0.2), 0 0 200px rgba(252, 1, 149, 0.4), 0 0 var(--dice_size) rgba(252, 1, 149, 0.6), 0 0 400px rgba(252, 1, 149, 0.8), 0 0 500px #fc0195;
+          box-shadow: 0 0 120px rgba(252, 1, 149, 0.2), 0 0 200px rgba(252, 1, 149, 0.4), 0 0 var(--dice_size) rgba(252, 1, 149, 0.6), 0 0 400px rgba(252, 1, 149, 0.8), 0 0 500px #fc0195;
+}
+
+.cube .top h2.top_number {
+  position: absolute;
+  -webkit-transform: translateZ(50px);
+          transform: translateZ(50px);
+  font-size: 1.2em;
+}
+
+.cube .top h2.top_number:first-child {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  color: rgba(255, 255, 255, 0.1);
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+}
+/*# sourceMappingURL=dice.css.map */
